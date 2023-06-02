@@ -1,0 +1,16 @@
+<resources>
+    <string name="app_name">Studolist</string>
+    <string name="email">Email</string>
+    <string name="password">Password</string>
+    <string name="login">LogIn</string>
+    <string name="enter_todo_hint">Add todo..</string>
+    <string name="image_description">button image</string>
+    <string name="tomorrow">Tommorow</string>
+    <string name="next_week">Next Week</string>
+    <string name="today">Today</string>
+    <string name="due_date_text">Due Date</string>
+    <string name="radio_high">High</string>
+    <string name="radio_med">Medium</string>
+    <string name="radio_low">Low</string>
+    <string name="action_settings">About</string>
+</resources>

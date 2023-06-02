@@ -1,0 +1,54 @@
+<androidx.appcompat.widget.LinearLayoutCompat xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <FrameLayout
+        android:id="@+id/main_FRAME_list_events"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:padding="10dp"
+        android:background="@color/burnt_orange"
+        >
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/main_LST_events"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:listitem="@layout/event_item" />
+    </FrameLayout>
+
+    <FrameLayout
+        android:id="@+id/main_FRAME_calendar_events"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:layout_gravity="center"
+        android:padding="10dp"
+        android:background="@color/beige"
+        >
+    <CalendarView
+        android:id="@+id/calendarView_frag"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/add_event_fab"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom|end"
+            android:layout_margin="6dp"
+            android:foregroundGravity="center"
+            app:srcCompat="@android:drawable/ic_input_add"
+            tools:ignore="ContentDescription" />
+
+    </FrameLayout>
+
+</androidx.appcompat.widget.LinearLayoutCompat>
+
