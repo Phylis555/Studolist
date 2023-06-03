@@ -40,6 +40,7 @@ public class MainActivity extends AppCompatActivity {
     private Query query;
 
     private FirestoreRecyclerOptions options;
+    private Query.Direction direction;
 
 
     @Override
@@ -81,7 +82,12 @@ public class MainActivity extends AppCompatActivity {
         popupSort.setOnMenuItemClickListener(new PopupMenu.OnMenuItemClickListener() {
             @Override
             public boolean onMenuItemClick(MenuItem menuItem) {
-                updateSortOrder(menuItem.getTitle().toString(), Query.Direction.ASCENDING);
+                if(menuItem.getTitle()!="priority") {
+                    updateSortOrder(menuItem.getTitle().toString(), Query.Direction.ASCENDING);
+                }
+                else {
+                    updateSortOrder(menuItem.getTitle().toString(), Query.Direction.DESCENDING);
+                }
                 return true;
             }
         });
