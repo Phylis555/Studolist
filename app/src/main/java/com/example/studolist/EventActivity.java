@@ -12,22 +12,20 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.CalendarView;
 import android.widget.EditText;
-import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.studolist.Fragments.CalendarFragment;
 import com.example.studolist.Fragments.ListFragment;
+import com.example.studolist.Interfaces.CallBack_FocusDate;
 import com.example.studolist.Models.Event;
+import com.example.studolist.Utilities.Utility;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.snackbar.Snackbar;
 import com.google.firebase.firestore.DocumentReference;
-import com.google.firebase.storage.FirebaseStorage;
-import com.google.firebase.storage.StorageReference;
 
 import java.util.Calendar;
 import java.util.Date;
-import java.util.concurrent.atomic.AtomicReference;
 
 public class EventActivity extends AppCompatActivity {
 
@@ -62,13 +60,12 @@ public class EventActivity extends AppCompatActivity {
         myDialog = new Dialog(this);
         initFragments();
         beginTransactions();
+
         add_event_fab = findViewById(R.id.add_event_fab);
         add_event_fab.setOnClickListener(v -> showPopup(v));
 
 
     }
-
-
 
 
     public void showPopup(View v) {
@@ -77,8 +74,7 @@ public class EventActivity extends AppCompatActivity {
 
         TextView txtclose;
         txtclose = (TextView) myDialog.findViewById(R.id.txtclose);
-
-        calendarView =(CalendarView)myDialog.findViewById(R.id.calendarView_event);
+        calendarView =(CalendarView)myDialog.findViewById(R.id.calendarView_event_popup);
         title =(EditText) myDialog.findViewById(R.id.editText_event);
         save_btn =(Button) myDialog.findViewById(R.id.save_btn_event);
 
@@ -117,8 +113,8 @@ public class EventActivity extends AppCompatActivity {
     }
     public void saveEventToFirebase(Event event) {
         DocumentReference documentReference;
-            //create new note
-            documentReference = Utility.loadTaskFromDb_events().document();
+        //create new note
+        documentReference = Utility.loadTaskFromDb_events().document();
         documentReference.set(event).addOnCompleteListener(new OnCompleteListener<Void>() {
             @Override
             public void onComplete(@NonNull com.google.android.gms.tasks.Task<Void> task) {

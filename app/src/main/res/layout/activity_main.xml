@@ -14,29 +14,33 @@
             android:id="@+id/toolbar"
             android:layout_width="match_parent"
             android:layout_height="?attr/actionBarSize"
-            android:background="?attr/colorPrimary"
+            android:background="?attr/colorPrimaryVariant"
             >
 
 
             <ImageButton
-                android:layout_width="36dp"
-                android:layout_height="36dp"
+                android:layout_width="48dp"
+                android:layout_height="48dp"
                 android:id="@+id/menu_btn"
                 android:src="@drawable/ic_baseline_menu_24"
                 android:layout_gravity="end|top"
                 android:layout_centerVertical="true"
                 app:tint="@color/white"
-                android:background="?attr/selectableItemBackgroundBorderless"/>
+                android:background="?attr/selectableItemBackgroundBorderless"
+                android:contentDescription="Menu Button"
+                />
         <ImageButton
-            android:layout_width="36dp"
-            android:layout_height="36dp"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
             android:id="@+id/sort_btn"
             android:layout_marginRight="20dp"
             android:src="@drawable/ic_baseline_sort_24"
             android:layout_gravity="end|top"
             android:layout_centerVertical="true"
+            android:contentDescription="Sort Button"
             app:tint="@color/white"
-            android:background="?attr/selectableItemBackgroundBorderless"/>
+            android:background="?attr/selectableItemBackgroundBorderless"
+          />
 
 
         </androidx.appcompat.widget.Toolbar>
@@ -50,6 +54,7 @@
         android:layout_gravity="bottom|end"
         android:layout_margin="16dp"
         android:foregroundGravity="center"
+        android:backgroundTint="?attr/colorPrimaryVariant"
         app:srcCompat="@android:drawable/ic_input_add"
         tools:ignore="ContentDescription" />
 
@@ -59,6 +64,7 @@
         android:layout_height="wrap_content"
         android:layout_gravity="bottom|start"
         android:foregroundGravity="center"
+        android:backgroundTint="?attr/colorPrimaryVariant"
         android:layout_margin="16dp"
         android:src="@drawable/ic_baseline_calendar_today_24"/>
 
@@ -75,6 +81,6 @@
     </androidx.recyclerview.widget.RecyclerView>
 
 
-    <include layout="@layout/bottom_sheet"/>
+
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

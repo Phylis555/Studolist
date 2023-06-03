@@ -7,8 +7,6 @@ public class Event {
     private String mTitle;
     private Date mDate;
 
-   // private boolean isCompleted;
-
     public Event() {    }
     public Event(String title, Date date) {
         mTitle = title;

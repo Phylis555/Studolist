@@ -14,7 +14,7 @@
         android:layout_height="match_parent"
         android:layout_weight="1"
         android:padding="10dp"
-        android:background="@color/burnt_orange"
+        android:background="@color/brown_beige"
         />
 <LinearLayout
     android:layout_width="match_parent"
@@ -29,7 +29,7 @@
         android:layout_height="match_parent"
         android:layout_weight="1"
         android:padding="10dp"
-        android:background="@color/beige"
+        android:background="@color/brown"
         >
 
         <com.google.android.material.floatingactionbutton.FloatingActionButton
@@ -39,6 +39,8 @@
             android:layout_gravity="bottom|end"
             android:layout_margin="6dp"
             android:foregroundGravity="center"
+            android:backgroundTint="?attr/colorPrimaryVariant"
+
             app:srcCompat="@android:drawable/ic_input_add"
             tools:ignore="ContentDescription" />
 

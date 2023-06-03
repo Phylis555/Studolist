@@ -7,6 +7,9 @@
     <color name="teal_700">#D4002F</color>
     <color name="black2">#FFFFFF</color>
     <color name="white2">#FFFFFFFF</color>
+    <color name="black_fare">#58554D</color>
+    <color name="grey_fare">#9E9B95</color>
+    <color name="brown">#884A39</color>
 
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
@@ -15,8 +18,10 @@
     <color name="burnt_orange">#EE4E34</color>
 
     <color name="beige">#DDC3A5</color>
+    <color name="brown_beige">#C38154</color>
     <color name="black_brown">#201E20</color>
-    <color name="tan">#E0A96D</color>
+    <color name="tan_light">#E0A96D</color>
+    <color name="tan">#FFAA4E</color>
 
 
 

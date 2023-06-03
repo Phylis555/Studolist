@@ -1,4 +1,4 @@
-package com.example.studolist;
+package com.example.studolist.Adapters;
 
 import android.app.Dialog;
 import android.content.Context;
@@ -16,10 +16,14 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.studolist.Models.Task;
+import com.example.studolist.R;
+import com.example.studolist.TaskDetailsActivity;
+import com.example.studolist.Utilities.Utility;
 import com.firebase.ui.firestore.FirestoreRecyclerAdapter;
 import com.firebase.ui.firestore.FirestoreRecyclerOptions;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.material.chip.Chip;
+import com.google.firebase.database.core.utilities.Utilities;
 import com.google.firebase.firestore.DocumentReference;
 import com.squareup.picasso.Picasso;
 
@@ -49,7 +53,7 @@ public class TaskAdapter  extends FirestoreRecyclerAdapter<Task, TaskAdapter.Tas
         holder.todayChip.setTextColor(color);
 
         holder.itemView.setOnClickListener((v)->{
-            Intent intent = new Intent(context,TaskDetailsActivity.class);
+            Intent intent = new Intent(context, TaskDetailsActivity.class);
             intent.putExtra("task",task.getTask());
             intent.putExtra("dueDate",task.getDueDate().getTime());
             intent.putExtra("priority", task.getPriority().ordinal());
@@ -67,7 +71,7 @@ public class TaskAdapter  extends FirestoreRecyclerAdapter<Task, TaskAdapter.Tas
                     public void onComplete(@NonNull com.google.android.gms.tasks.Task<Void> task) {
                         if(task.isSuccessful()){
                             //note is competed
-                            Utility.showToast(context,"Task completed");
+                            Utility.showToast(context, "Task completed");
                         }else{
                             Utility.showToast(context,"Failed while deleting task");
                         }

@@ -1,4 +1,4 @@
-package com.example.studolist;
+package com.example.studolist.Interfaces;
 
 import java.util.Date;
 

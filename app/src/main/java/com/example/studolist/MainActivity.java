@@ -3,8 +3,9 @@ package com.example.studolist;
 import android.content.Intent;
 import android.os.Bundle;
 
-import com.example.studolist.Models.Priority;
+import com.example.studolist.Adapters.TaskAdapter;
 import com.example.studolist.Models.Task;
+import com.example.studolist.Utilities.Utility;
 import com.firebase.ui.firestore.FirestoreRecyclerOptions;
 import com.google.android.material.chip.Chip;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
@@ -20,8 +21,6 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.view.MenuItem;
 import android.widget.ImageButton;
 import android.widget.PopupMenu;
-
-import java.util.Comparator;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -76,19 +75,6 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
-    Comparator<Task> priorityComparator = new Comparator<Task>() {
-        @Override
-        public int compare(Task task1, Task task2) {
-            Priority priority1 = task1.getPriority();
-            Priority priority2 = task2.getPriority();
-
-            // Compare the enum values to determine the sort order
-            return priority1.compareTo(priority2);
-        }
-    };
-    private void updateSortPriority() {
-        //Try to order with priority
-    }
 
     private void updateSortOrder(String field, Query.Direction direction) {
         query = Utility.loadTaskFromDb_tasks().orderBy(field, direction);
@@ -114,7 +100,8 @@ public class MainActivity extends AppCompatActivity {
     private void showMenu() {
         PopupMenu popupMenu  = new PopupMenu(MainActivity.this,menuBtn);
         FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
-        popupMenu.getMenu().add(user.getDisplayName());
+        popupMenu.getMenu().add("Username: " +user.getDisplayName());
+        popupMenu.getMenu().add("Theme");
         popupMenu.getMenu().add("Logout");
         popupMenu.show();
         popupMenu.setOnMenuItemClickListener(new PopupMenu.OnMenuItemClickListener() {
@@ -124,6 +111,10 @@ public class MainActivity extends AppCompatActivity {
                     FirebaseAuth.getInstance().signOut();
                     startActivity(new Intent(MainActivity.this,LoginActivity.class));
                     finish();
+                    return true;
+                }
+                if(menuItem.getTitle()=="Theme"){
+                    startActivity(new Intent(MainActivity.this,ThemeActivity.class));
                     return true;
                 }
                 return false;

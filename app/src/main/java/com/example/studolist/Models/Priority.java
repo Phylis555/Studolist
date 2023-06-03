@@ -1,8 +1,8 @@
 package com.example.studolist.Models;
 
 public enum Priority {
-        LOW,
-        MEDIUM,
-        HIGH,
-        NA;
+        a_LOW,
+        b_MEDIUM,
+        c_HIGH;
+
 }

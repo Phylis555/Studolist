@@ -1,17 +1,13 @@
 package com.example.studolist.Fragments;
 
-import android.content.Context;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.ItemTouchHelper;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -19,24 +15,18 @@ import androidx.recyclerview.widget.RecyclerView;
 
 
 import com.example.studolist.Adapters.EventAdapter;
-import com.example.studolist.CallBack_FocusDate;
-import com.example.studolist.EventActivity;
+import com.example.studolist.Interfaces.CallBack_FocusDate;
 import com.example.studolist.Models.Event;
-import com.example.studolist.Models.Task;
 import com.example.studolist.R;
-import com.example.studolist.RecyclerViewInterface;
-import com.example.studolist.TaskAdapter;
-import com.example.studolist.TaskDetailsActivity;
-import com.example.studolist.Utility;
+import com.example.studolist.Interfaces.RecyclerViewInterface;
+import com.example.studolist.Utilities.Utility;
 import com.firebase.ui.firestore.FirestoreRecyclerOptions;
 import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.material.chip.Chip;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.Query;
 import com.google.firebase.firestore.QuerySnapshot;
 
-import java.util.Date;
 import java.util.List;
 
 
@@ -104,7 +94,7 @@ public class ListFragment extends Fragment implements RecyclerViewInterface {
 
 
     private void setupRecyclerView() {
-        query = Utility.loadTaskFromDb_events().orderBy("mDate", Query.Direction.DESCENDING);
+        query = Utility.loadTaskFromDb_events();
         options = new FirestoreRecyclerOptions.Builder<Event>()
                 .setQuery(query, Event.class).build();
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
@@ -136,11 +126,11 @@ public class ListFragment extends Fragment implements RecyclerViewInterface {
                             public void onComplete(@NonNull com.google.android.gms.tasks.Task<Void> task) {
                                 if(task.isSuccessful()){
                                     //event is added
-                                    Toast.makeText(getContext(),"Event deleted successfully",Toast.LENGTH_SHORT).show();
+                                    Utility.showToast(getContext(), "Event deleted successfully");
                                     eventAdapter.notifyDataSetChanged();
 
                                 }else{
-                                    Toast.makeText(getContext(),"Error occurred in deleting event",Toast.LENGTH_SHORT).show();
+                                    Utility.showToast(getContext(), "Error occurred in deleting event");
                                 }
                             }
                         });

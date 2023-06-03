@@ -6,7 +6,7 @@
     android:orientation="vertical"
     android:layout_width="350dp"
     android:layout_height="475dp"
-    android:background="@color/cardview_dark_background"
+    android:background="@color/white"
     android:padding="5dp"
     android:layout_gravity="center">
     <TextView
@@ -26,10 +26,11 @@
         tools:context=".MainActivity">
 
         <CalendarView
-            android:id="@+id/calendarView_event"
+            android:id="@+id/calendarView_event_popup"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="3dp"
+            android:background="@color/brown"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
@@ -41,10 +42,18 @@
             android:layout_marginStart="21dp"
             android:layout_marginTop="6dp"
             android:ems="10"
+            android:outlineAmbientShadowColor="@color/black"
+            android:outlineSpotShadowColor="@color/black"
+            android:textColorHint="@color/black"
+            android:textColor="@color/black"
+
+            android:backgroundTint="@color/black"
+
+            android:textColorLink="@color/black"
             android:inputType="textPersonName"
-            android:text="Title"
+            android:hint="Add event"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/calendarView_event" />
+            app:layout_constraintTop_toBottomOf="@+id/calendarView_event_popup" />
 
         <Button
             android:id="@+id/save_btn_event"
@@ -55,7 +64,7 @@
             android:onClick="buttonSaveEvent"
             android:text="Save"
             app:layout_constraintStart_toEndOf="@+id/editText_event"
-            app:layout_constraintTop_toBottomOf="@+id/calendarView_event" />
+            app:layout_constraintTop_toBottomOf="@+id/calendarView_event_popup" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

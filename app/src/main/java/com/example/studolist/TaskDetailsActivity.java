@@ -22,6 +22,7 @@ import android.widget.Toast;
 
 import com.example.studolist.Models.Priority;
 import com.example.studolist.Models.Task;
+import com.example.studolist.Utilities.Utility;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
@@ -84,17 +85,17 @@ public class TaskDetailsActivity extends AppCompatActivity {
         if(isEdit)
         {
             calendarView.setDate(dueDateEdit);
-            if (priorityEdit == Priority.HIGH.ordinal() ) {
+            if (priorityEdit == Priority.c_HIGH.ordinal() ) {
             selectedRadioBtn = findViewById(R.id.radioButton_high);
             selectedRadioBtn.setChecked(true);
-        } else if (priorityEdit ==Priority.MEDIUM.ordinal()) {
+        } else if (priorityEdit ==Priority.b_MEDIUM.ordinal()) {
             selectedRadioBtn = findViewById(R.id.radioButton_med);
             selectedRadioBtn.setChecked(true);
-        } else if (priorityEdit ==Priority.LOW.ordinal()) {
+        } else if (priorityEdit ==Priority.a_LOW.ordinal()) {
             selectedRadioBtn = findViewById(R.id.radioButton_low);
             selectedRadioBtn.setChecked(true);
         } else {
-            priority = Priority.LOW;
+            priority = Priority.a_LOW;
         }
             enterTodo.setText(taskEdit);
             calendarView.setOnDateChangeListener((calendarView, year, month, dayOfMoth) -> {
@@ -149,7 +150,6 @@ public class TaskDetailsActivity extends AppCompatActivity {
         });
 
         priorityBtn.setOnClickListener(view13 -> {
-            // Utils.hideSoftKeyboard(view13);
             priorityRadioGroup.setVisibility(
                     priorityRadioGroup.getVisibility() == View.GONE ? View.VISIBLE : View.GONE
             );
@@ -159,16 +159,16 @@ public class TaskDetailsActivity extends AppCompatActivity {
                 selectedBtnId = checkedId;
                 selectedRadioBtn = findViewById(selectedBtnId);
                 if (selectedRadioBtn.getId() == R.id.radioButton_high) {
-                    priority = Priority.HIGH;
+                    priority = Priority.c_HIGH;
                 } else if (selectedRadioBtn.getId() == R.id.radioButton_med) {
-                    priority = Priority.MEDIUM;
+                    priority = Priority.b_MEDIUM;
                 } else if (selectedRadioBtn.getId() == R.id.radioButton_low) {
-                    priority = Priority.LOW;
+                    priority = Priority.a_LOW;
                 } else {
-                    priority = Priority.LOW;
+                    priority = Priority.a_LOW;
                 }
             } else {
-                priority = Priority.LOW;
+                priority = Priority.a_LOW;
             }
         });
         addImageBtn.setOnClickListener(v -> {
