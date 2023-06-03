@@ -30,7 +30,7 @@
         android:id="@+id/rcl_calendar_event_icon"
         android:layout_width="4dp"
         android:layout_height="4dp"
-        android:background="?attr/colorPrimary"
+        android:background="@color/burnt_orange"
         android:layout_marginTop="9dp"
         />
 

@@ -8,7 +8,7 @@
 
 
         <!-- Secondary brand color. -->
-        <item name="colorSecondary">#735F32</item>
+        <item name="colorSecondary">#AA904C</item>
         <item name="colorSecondaryVariant">@color/white</item>
         <item name="colorOnSecondary">@color/grey_fare</item>
         <!-- Status bar color. -->

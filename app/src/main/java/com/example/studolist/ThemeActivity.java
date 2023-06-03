@@ -43,6 +43,7 @@ public class ThemeActivity extends AppCompatActivity {
         editor = sharedPreferences.edit();
         nightMode = sharedPreferences.getBoolean(NIGHT, false);
 
+
         aSwitch.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {

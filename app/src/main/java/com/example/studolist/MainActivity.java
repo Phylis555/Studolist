@@ -1,6 +1,8 @@
 package com.example.studolist;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 
 import com.example.studolist.Adapters.TaskAdapter;
@@ -14,6 +16,7 @@ import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.Query;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.app.AppCompatDelegate;
 import androidx.appcompat.widget.Toolbar;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -32,12 +35,20 @@ public class MainActivity extends AppCompatActivity {
     ImageButton sortBtn;
     TaskAdapter taskAdapter;
     Chip camChip;
+    SharedPreferences sharedPreferences;
+    private boolean nightMode;
     private Query query;
     private FirestoreRecyclerOptions options;
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
+        sharedPreferences = getSharedPreferences("sharedPrefs", Context.MODE_PRIVATE);
+        nightMode = sharedPreferences.getBoolean("night", false);
+
+        Utility.updateTheme(this, nightMode);
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         findViews();

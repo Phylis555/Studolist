@@ -4,6 +4,8 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.Dialog;
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
@@ -42,6 +44,9 @@ public class EventActivity extends AppCompatActivity {
 
     Calendar calendar = Calendar.getInstance();
 
+    SharedPreferences sharedPreferences;
+    private boolean nightMode;
+
     private Dialog myDialog;
 
 
@@ -55,6 +60,10 @@ public class EventActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        sharedPreferences = getSharedPreferences("sharedPrefs", Context.MODE_PRIVATE);
+        nightMode = sharedPreferences.getBoolean("night", false);
+
+        Utility.updateTheme(this, nightMode);
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_event);
         myDialog = new Dialog(this);

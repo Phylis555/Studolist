@@ -5,8 +5,11 @@ import android.content.Context;
 import android.graphics.Color;
 import android.widget.Toast;
 
+import androidx.appcompat.app.AppCompatDelegate;
+
 import com.example.studolist.Models.Priority;
 import com.example.studolist.Models.Task;
+import com.example.studolist.R;
 import com.google.firebase.Timestamp;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -37,6 +40,20 @@ public class Utility {
 
         return  simpleDateFormat.format(date);
 
+    }
+
+    public static void updateTheme(Context context,boolean isNight)
+    {
+        if(isNight)
+        {
+            context.setTheme(R.style.DarkTheme);
+            AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES);
+
+        } else{
+            context.setTheme(R.style.AppTheme);
+            AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
+
+        }
     }
 
     static String timestampToString(Timestamp timestamp) {
