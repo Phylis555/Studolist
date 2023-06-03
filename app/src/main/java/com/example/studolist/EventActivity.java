@@ -60,9 +60,8 @@ public class EventActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        sharedPreferences = getSharedPreferences("sharedPrefs", Context.MODE_PRIVATE);
-        nightMode = sharedPreferences.getBoolean("night", false);
-
+        sharedPreferences = getSharedPreferences(ThemeActivity.SHARED_PREFS, Context.MODE_PRIVATE);
+        nightMode = sharedPreferences.getBoolean(ThemeActivity.NIGHT, false);
         Utility.updateTheme(this, nightMode);
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_event);
