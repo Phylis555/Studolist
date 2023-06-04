@@ -15,6 +15,7 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.studolist.MainActivity;
 import com.example.studolist.Models.Task;
 import com.example.studolist.R;
 import com.example.studolist.TaskDetailsActivity;
@@ -27,12 +28,14 @@ import com.google.firebase.database.core.utilities.Utilities;
 import com.google.firebase.firestore.DocumentReference;
 import com.squareup.picasso.Picasso;
 
+import java.util.Calendar;
+
 
 public class TaskAdapter  extends FirestoreRecyclerAdapter<Task, TaskAdapter.TaskViewHolder> {
 
-
     Context context;
     Dialog myDialog;
+
     public TaskAdapter(@NonNull FirestoreRecyclerOptions<Task> options, Context context) {
         super(options);
 
@@ -44,10 +47,13 @@ public class TaskAdapter  extends FirestoreRecyclerAdapter<Task, TaskAdapter.Tas
 
     @Override
     protected void onBindViewHolder(@NonNull TaskViewHolder holder, int position, @NonNull Task task) {
-        String formatted = Utility.formatDate(task.getDueDate());
 
+        if(task.getDueDate() != null)
+        {
+            String formatted = Utility.formatDate(task.getDueDate());
+            holder.todayChip.setText(formatted);
+        }
         holder.todoTxt.setText(task.getTask());
-        holder.todayChip.setText(formatted);
 
         int color = Utility.priorityColor(task);
         holder.todayChip.setTextColor(color);
@@ -77,6 +83,10 @@ public class TaskAdapter  extends FirestoreRecyclerAdapter<Task, TaskAdapter.Tas
                         }
                     }
                 });
+
+            reset();
+
+
             });
         if (task.getImgUri() == null) {
             holder.camChip.setVisibility(View.INVISIBLE);
@@ -100,6 +110,15 @@ public class TaskAdapter  extends FirestoreRecyclerAdapter<Task, TaskAdapter.Tas
         });
 
 
+
+    }
+
+    private void reset()
+    {
+        Intent intent = new Intent(context, MainActivity.class);
+        context.startActivity(intent);
+        ((MainActivity)context).overridePendingTransition(0, 0);
+        ((MainActivity)context).finish();
     }
     public void showPopup(View v,String imgUri) {
         TextView txtclose;

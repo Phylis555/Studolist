@@ -120,7 +120,6 @@ public class ListFragment extends Fragment implements RecyclerViewInterface {
                         itemDocuments = querySnapshot.getDocuments();
                         DocumentSnapshot clickedDocument = itemDocuments.get(viewHolder.getAdapterPosition());
                         DocumentReference docId = clickedDocument.getReference();
-                        //DocumentReference documentReference = Utility.loadTaskFromDb_events().document(docId);
                         docId.delete().addOnCompleteListener(new OnCompleteListener<Void>() {
                             @Override
                             public void onComplete(@NonNull com.google.android.gms.tasks.Task<Void> task) {

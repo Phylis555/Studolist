@@ -1,6 +1,8 @@
 package com.example.studolist.Models;
 
 import android.net.Uri;
+
+import java.util.Calendar;
 import java.util.Date;
 
 public class Task {
@@ -12,6 +14,7 @@ public class Task {
     private Date dueDate;
     private Date dataCreated;
 
+
     private String imgUri;
 
     public Task(String task, Priority priority, Date dueDate, Date dataCreated, String imgUri) {
@@ -22,7 +25,13 @@ public class Task {
         this.imgUri = imgUri;
     }
 
-    public Task() {    }
+    public Task() {
+        this.task = "";
+        this.priority = Priority.a_LOW;
+        this.dueDate = Calendar.getInstance().getTime();
+        this.dataCreated = Calendar.getInstance().getTime();
+        this.imgUri = "";
+    }
 
     public String getTask() {
         return task;

@@ -32,11 +32,8 @@ public class CalendarFragment extends Fragment {
     }
 
     private void initViews() {
-        calendarView.setOnDateChangeListener((calendarView, year, month, dayOfMoth) -> {
-            calendar.clear();
-            calendar.set(year, month, dayOfMoth);
+        calendarView.setMinDate(System.currentTimeMillis());
 
-        });
     }
     public void focusDateOnCalendar(Date mDate)
     {

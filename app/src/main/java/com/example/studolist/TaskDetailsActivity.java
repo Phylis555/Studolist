@@ -71,6 +71,7 @@ public class TaskDetailsActivity extends AppCompatActivity {
 
         findViews();
         initViews();
+        calendarView.setMinDate(System.currentTimeMillis());
         storageReference = FirebaseStorage.getInstance().getReference("tasks_images");
 
         //recieve data
@@ -154,6 +155,7 @@ public class TaskDetailsActivity extends AppCompatActivity {
                     priorityRadioGroup.getVisibility() == View.GONE ? View.VISIBLE : View.GONE
             );
         });
+        priority = Priority.a_LOW;
         priorityRadioGroup.setOnCheckedChangeListener((radioGroup, checkedId) -> {
             if (priorityRadioGroup.getVisibility() == View.VISIBLE) {
                 selectedBtnId = checkedId;
@@ -225,19 +227,22 @@ public class TaskDetailsActivity extends AppCompatActivity {
 
         String task = enterTodo.getText().toString().trim();
 
-        Task myTask = null;
-        if (!TextUtils.isEmpty(task) && dueDate != null && priority != null) {
+        Task myTask = new Task();
+        if (!TextUtils.isEmpty(task)) {
             if (mImageUri != null) {
                 saveTaskToStorage();
             }else {
-                myTask = new Task(task, priority,
-                        dueDate, Calendar.getInstance().getTime(),
-                        imageUrl);
+                myTask.setTask(task);
+                myTask.setPriority(priority);
+                if(dueDate!=null)
+                    myTask.setDueDate(dueDate);
+                myTask.setImgUri(imageUrl);
                 saveTaskToFirebase(myTask);
             }
 
+
         } else {
-            Snackbar.make(saveBtn, "Empty Task", Snackbar.LENGTH_LONG)
+            Snackbar.make(saveBtn, "Empty task", Snackbar.LENGTH_LONG)
                     .show();
             return;
         }
@@ -276,10 +281,9 @@ public class TaskDetailsActivity extends AppCompatActivity {
                                 String task = enterTodo.getText().toString().trim();
                                 myTask.setTask(task);
                                 myTask.setPriority(priority);
-                                myTask.setDueDate(dueDate);
-                                myTask.setDataCreated(Calendar.getInstance().getTime());
+                                if(dueDate !=null)
+                                    myTask.setDueDate(dueDate);
                                 myTask.setImgUri(imageUrl);
-
                                 saveTaskToFirebase(myTask);
                             }
                         });
@@ -314,9 +318,13 @@ public class TaskDetailsActivity extends AppCompatActivity {
         documentReference.set(task).addOnCompleteListener(new OnCompleteListener<Void>() {
             @Override
             public void onComplete(@NonNull com.google.android.gms.tasks.Task<Void> task) {
+
                 if (task.isSuccessful()) {
                     //task is added
-                    Utility.showToast(TaskDetailsActivity.this, "Task added successfully");
+                    if(isEdit)
+                        Utility.showToast(TaskDetailsActivity.this, "Task edited successfully");
+                    else
+                        Utility.showToast(TaskDetailsActivity.this, "Task added successfully");
                     finish();
                 } else {
                     Utility.showToast(TaskDetailsActivity.this, "Failed while adding task");
