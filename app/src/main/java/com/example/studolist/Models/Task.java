@@ -76,7 +76,7 @@ public class Task {
     public String toShareStr()
     {
         return  "The task is " + task +"," +
-                " with a priority of " + priority +
+                " with a priority level of " + priority+
                 ". It is due on " + dueDate +
                 "and was created on " + dataCreated +
                 ".The image URI associated with the task is: \n" + imgUri

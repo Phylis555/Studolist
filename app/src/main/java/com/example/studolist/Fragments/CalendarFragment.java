@@ -34,6 +34,7 @@ public class CalendarFragment extends Fragment {
     private void initViews() {
         calendarView.setMinDate(System.currentTimeMillis());
 
+
     }
     public void focusDateOnCalendar(Date mDate)
     {

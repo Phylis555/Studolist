@@ -68,10 +68,8 @@ public class EventActivity extends AppCompatActivity {
         myDialog = new Dialog(this);
         initFragments();
         beginTransactions();
-
         add_event_fab = findViewById(R.id.add_event_fab);
         add_event_fab.setOnClickListener(v -> showPopup(v));
-
 
     }
 

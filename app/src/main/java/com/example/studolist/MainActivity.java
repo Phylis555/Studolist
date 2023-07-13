@@ -120,6 +120,7 @@ public class MainActivity extends AppCompatActivity {
         FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
         popupMenu.getMenu().add("Username: " +user.getDisplayName());
         popupMenu.getMenu().add("Theme");
+        popupMenu.getMenu().add("About");
         popupMenu.getMenu().add("Logout");
         popupMenu.show();
         popupMenu.setOnMenuItemClickListener(new PopupMenu.OnMenuItemClickListener() {
@@ -133,6 +134,10 @@ public class MainActivity extends AppCompatActivity {
                 }
                 if(menuItem.getTitle()=="Theme"){
                     startActivity(new Intent(MainActivity.this,ThemeActivity.class));
+                    return true;
+                }
+                if(menuItem.getTitle()=="About"){
+                    //Start new activity
                     return true;
                 }
                 return false;
