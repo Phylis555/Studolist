@@ -32,8 +32,7 @@ import java.util.List;
 
 public class ListFragment extends Fragment implements RecyclerViewInterface {
 
-    private TextView eventName;
-    private TextView eventStatus;
+
 
     private CallBack_FocusDate callBack_focusDate;
     RecyclerView recyclerView;
